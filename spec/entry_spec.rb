@@ -49,4 +49,6 @@ RSpec.describe Entry do
     end
   end
   
+  # Entry 
+  
 end    

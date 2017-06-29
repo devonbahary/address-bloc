@@ -18,8 +18,21 @@ class AddressBook
       end
       index += 1
     end
+    
     # add entry in proper position
     entries.insert(index, Entry.new(name, phone_number, email))
+  end
+  
+  
+  def remove_entry(name, phone_number, email)
+    # find matching index
+    index_to_remove = nil
+    entries.each_with_index do |entry, index|
+        index_to_remove = index if entry.name == name && entry.phone_number == phone_number && entry.email == email
+    end
+    
+    # remove entry if match found
+    entries.delete_at(index_to_remove) if index_to_remove
   end
   
 end
