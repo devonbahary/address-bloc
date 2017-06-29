@@ -33,4 +33,33 @@ class AddressBook
     end
   end
   
+  def binary_search(name)
+    # establish initial lower/upper search boundaries
+    lower = 0
+    upper = entries.length - 1
+    
+    # loop through search
+    while lower <= upper
+      # define midpoint between current lower/upper search boundaries
+      mid = (lower + upper) / 2
+      mid_name = entries[mid].name
+      
+      # return if name is midpoint, but if..
+      #   midpoint is higher than name..
+      #     ..establish new upper boundary just below current midpoint
+      #   midpoint is lower than name..
+      #     ..establish new lower boundary just above current midpoint
+      if name == mid_name
+        return entries[mid]
+      elsif name < mid_name
+        upper = mid - 1
+      elsif name > mid_name
+        lower = mid + 1
+      end
+    end
+    
+    # return 'nil' if nothing found
+    return nil
+  end
+  
 end
